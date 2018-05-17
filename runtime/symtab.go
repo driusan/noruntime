@@ -66,6 +66,8 @@ const (
 // matched changes to the code in cmd/internal/ld/symtab.go:symtab.
 // moduledata is stored in read-only memory; none of the pointers here
 // are visible to the garbage collector.
+type moduledata [393]byte
+/*
 type moduledata struct {
 	pclntable    []byte
 	ftab         []functab
@@ -81,8 +83,13 @@ type moduledata struct {
 	end, gcdata, gcbss    uintptr
 	types, etypes         uintptr
 
+	textsectmap []textsect
 	typelinks []int32 // offsets from types
 	itablinks []*itab
+
+	ptab []ptabEntry
+
+	pluginpath string
 
 	modulename   string
 	modulehashes []modulehash
@@ -92,7 +99,7 @@ type moduledata struct {
 	typemap map[typeOff]*_type // offset to *_rtype in previous module
 
 	next *moduledata
-}
+}*/
 
 // For each shared library a module links against, the linker creates an entry in the
 // moduledata.modulehashes slice containing the name of the module, the abi hash seen
